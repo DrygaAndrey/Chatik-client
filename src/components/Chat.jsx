@@ -4,6 +4,7 @@ import "./styles/chat.sass";
 
 function Chat({ state }) {
   const [messageValue, setMessageValue] = useState("");
+  const [hiddenComponentClassName, setHiddenComponentClassName] = useState("");
   const [currentUser, setCurrentUser] = useState({ id: 0 });
   const bottomRef = useRef(null);
   function buttonHandler(e) {
@@ -36,7 +37,19 @@ function Chat({ state }) {
   }, []);
   return (
     <div className="chat">
-      <div className="chat-users">
+      <button
+        className="hiddenButton"
+        onClick={() => {
+          if (hiddenComponentClassName === "") {
+            setHiddenComponentClassName("show");
+          } else {
+            setHiddenComponentClassName("");
+          }
+        }}
+      >
+        ≡
+      </button>
+      <div className={`chat-users ${hiddenComponentClassName}`}>
         <b>
           Room {state.roomId} contain {state.users.length} users:
         </b>

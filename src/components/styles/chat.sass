@@ -4,6 +4,8 @@
   display: flex
   justify-content: center
   align-items: center
+  .hiddenButton
+    display: none
   .chat-users
     height: 100%
     display: flex
@@ -37,7 +39,9 @@
         padding-bottom: 8px
         padding-right: 20px
         padding-left: 20px
+        margin-bottom: 10px
   .messagesAndForm
+    overflow: hidden
     display: flex
     width: 50%
     height: 100%
@@ -57,6 +61,8 @@
       padding-left: 15px
 
       .messages
+        padding-right: 20px
+        align-items: center
         margin-top: 10px
         width: 90%
         display: flex
@@ -69,11 +75,14 @@
           border-radius: 20px
 
         .message
-          width: 95%
+          margin-right: auto
+          max-width: 95%
+          min-width: 30%
           margin-bottom: 10px
           &:last-child
             margin-bottom: 0px
           p
+            word-wrap: break-word
             margin: 0px
             background-color: #5007d138
             border-top-left-radius: 5px
@@ -85,11 +94,15 @@
             border-bottom-left-radius: 5px
             border-bottom-right-radius: 5px
         .currentUserMessage
-          width: 95%
+          max-width: 95%
+          min-width: 30%
           margin-bottom: 10px
+          margin-left: auto
           &:last-child
             margin-bottom: 0px
           p
+            word-wrap: break-word
+
             text-align: right
             margin: 0px
             background-color: #5007d138
@@ -106,33 +119,33 @@
     form
 
       display: flex
-      width: 90%
+      width: 100%
       justify-content: flex-start
-      align-items: center
-      padding-left: 15px
+      align-items: flex-end
+      border-top: 4px #eeeff8 solid
       height: 15%
       input
+        font-size: 20px
+        font-family: inherit
         outline: none
         box-sizing: border-box
+        display: flex
+        align-items: center
         width: 80%
         margin: 0px
         padding: 0px
-        height: 50%
+        height: 100%
         border: none
-        border-left: 1px solid black
-        border-top: 1px solid black
-        border-bottom: 1px solid black
+        border-bottom: 4px solid #eeeff8
       button
-        width: 15%
+        font-size: 20px
+        font-family: inherit
+        width: 20%
         box-sizing: border-box
         border: none
-        height: 50%
+        height: 100%
         padding: 0px
         margin: 0px
-
-        border-right: 1px solid black
-        border-top: 1px solid black
-        border-bottom: 1px solid black
 
 @media ( max-width:1024px  )
   .chat
@@ -143,5 +156,76 @@
     .messagesAndForm
       width: 60%
 @media ( max-width:768px  )
+  .chat
+    height: 95%
+    .chat-users
+    .messagesAndForm
+      width: 70%
+@media ( max-width:576px  )
+  .chat
+    position: relative
+    .hiddenButton
+      display: flex
+      justify-content: center
+      align-items: center
+      padding: 0px
+      margin: 0px
+      position: absolute
+      width: 20px
+      height: 20px
+      top: 0px
+      right: 5px
+      outline: none
+      font-family: inherit
+      -webkit-box-shadow: 0px 0px 7px 8px rgba(0,0,0,0.43)
+      -moz-box-shadow: 0px 0px 7px 8px rgba(0,0,0,0.43)
+      box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.43)
+      border: none
+    .show
+      display: flex !important
+      left: 0px !important
+    .chat-users
+      position: absolute
+      left: -360px
+      border-radius: 0px
+      border-top-right-radius: 10px
+      border-bottom-right-radius: 10px
+      width: 60%
+      -webkit-box-shadow: 0px 0px 9px 10px rgba(0,0,0,0.46)
+      -moz-box-shadow: 0px 0px 9px 10px rgba(0,0,0,0.46)
+      box-shadow: 0px 0px 9px 10px rgba(0,0,0,0.46)
+      background-color: rgb(212 200 235)
+      transition: 1s
+      &::-webkit-scrollbar-thumb
+        background-color: #a399b5
+    .messagesAndForm
+      width: 90%
+      border: 1px solid #cbcaca
+      border-radius: 20px
+      .chat-messages
+        height: 93%
+        .messages
+          .message
+            font-size: 14px
 
-@media ( max-width:425px  )
+      form
+        height: 7%
+        input
+          padding-left: 10px
+          font-size: 14px
+        button
+          font-size: 14px
+@media ( max-width:576px  )
+  .chat
+    .messagesAndForm
+      .chat-messages
+        .messages
+          .message
+            font-size: 12px
+          .currentUserMessage
+            font-size: 12px
+      form
+        input
+          font-size: 12px
+        button
+          font-size: 12px
